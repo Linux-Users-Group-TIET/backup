@@ -17,7 +17,7 @@ function Header() {
         <Link to='/Products'> <li className="hidden sm:inline hover:px-1  transition-all duration-500 hover:text-slate-800 ">Bathroom</li> </Link>
         <Link to='/Products'>  <li className="hidden sm:inline hover:px-1  rounded-lg transition-all duration-300 hover:text-slate-800">Kitchen</li> </Link>
         <Link to='/About'>   <li className="hidden sm:inline hover:px-1  rounded-lg transition-all duration-300 hover:text-slate-800">About Us</li> </Link>
-        <Link to='/About'>   <li className=" sm:inline sm:text-base text-xs hover:px-1  rounded-lg transition-all duration-300 hover:text-slate-800">My Profile</li> </Link>
+        <Link to='/signUp'>   <li className=" sm:inline sm:text-base text-xs hover:px-1  rounded-lg transition-all duration-300 hover:text-slate-800">Sign in</li> </Link>
         </ul>
         </div>
     </header>
