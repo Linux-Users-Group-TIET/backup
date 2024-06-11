@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/signIn.css"; // Import CSS for styling
+import { useDispatch, useSelector } from "react-redux";
+import {signInFailure,signInSuccess,SignInStart } from '../redux/user/userSlice'
 
 function SignIn() {
   const [formdata, setformdata] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const {loading,error} = useSelector((state) => state.user)
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     setformdata({
       ...formdata,
@@ -20,12 +21,12 @@ function SignIn() {
 
     // Check if formdata is empty
     if (Object.keys(formdata).length === 0) {
-      setError("Bhai email or password toh daalde");
+     dispatch(signInFailure("Bhai credentials toh bhrde"));
       return;
     }
 
     try {
-      setLoading(true);
+      dispatch(SignInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -35,16 +36,13 @@ function SignIn() {
       });
       const data = await res.json();
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+      dispatch(signInFailure(data.message));
         return;
       }
-      setLoading(false);
-      setError(null);
+      dispatch(signInSuccess(data))
       navigate("/");
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(signInFailure(error.message))
     }
   };
 
