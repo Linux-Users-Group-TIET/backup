@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../assets/signIn.css"; // Import CSS for styling
 import { useDispatch, useSelector } from "react-redux";
 import {signInFailure,signInSuccess,SignInStart } from '../redux/user/userSlice'
+import OAuth from "../Components/OAuth";
 
 function SignIn() {
   const [formdata, setformdata] = useState({});
@@ -20,10 +21,10 @@ function SignIn() {
     e.preventDefault();
 
     // Check if formdata is empty
-    if (Object.keys(formdata).length === 0) {
-     dispatch(signInFailure("Bhai credentials toh bhrde"));
-      return;
-    }
+    // if (Object.keys(formdata).length === 0) {
+    // //  dispatch(signInFailure("Bhai credentials toh bhrde"));
+    //   return;
+    // }
 
     try {
       dispatch(SignInStart());
@@ -70,6 +71,7 @@ function SignIn() {
         >
           {loading ? "Loading.." : "SIGN in"}
         </button>
+        <OAuth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dont have an account?</p>

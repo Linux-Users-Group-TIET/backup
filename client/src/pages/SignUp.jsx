@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/signUp.css"; // Import CSS for styling
+import OAuth from "../Components/OAuth";
 
 function SignUp() {
   const [formdata, setformdata] = useState({});
@@ -20,7 +21,7 @@ function SignUp() {
 
     // Check if formdata is empty
     if (Object.keys(formdata).length === 0) {
-      setError("Register to krle");
+      // setError("Register to krle");
       return;
     }
 
@@ -79,6 +80,7 @@ function SignUp() {
         >
           {loading ? "Loading.." : "SIGN UP"}
         </button>
+        <OAuth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
