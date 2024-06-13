@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signOutUserFailure,
+  signOutUserStart,
+  signOutUserSuccess,
+} from "../redux/user/userSlice";
 import {
   getDownloadURL,
   getStorage,
@@ -15,7 +20,7 @@ function Profile() {
   const [fileperc, setFileperc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formdata, setFormData] = useState({});
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (file) {
       handleFileUpload(file); // When 'file' changes, trigger the file upload process
@@ -50,6 +55,21 @@ function Profile() {
         );
       }
     );
+  };
+
+  const handleSignOut = async () => {
+    try {
+      dispatch(signOutUserStart());
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(signOutUserFailure(data.message));
+        return;
+      }
+      dispatch(signOutUserSuccess(data));
+    } catch (error) {
+      dispatch(signOutUserFailure(error.message));
+    }
   };
 
   return (
@@ -110,7 +130,9 @@ function Profile() {
       </form>
       <div className="flex justify-between mt-5">
         <span className="text-red-700 cursor-pointer">Delete Account</span>
-        <span className="text-red-700 cursor-pointer">Sign out</span>
+        <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
+          Sign out
+        </span>
       </div>
     </div>
   );
