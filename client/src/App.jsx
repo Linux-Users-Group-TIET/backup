@@ -8,20 +8,24 @@ import Products from './pages/Products';
 import Header from './Components/Header';
 import PrivateRoute from './Components/PrivateRoute';
 import Profile from './pages/Profile';
+import AddProduct from "./pages/AddProduct";
 function App() {
-  return <BrowserRouter>
-  <Header/>
-  <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/about' element={<About/>}/>
-      <Route path='/products' element={<Products/>}/>
-      <Route path='/signup' element={<SignUp/>}/>
-      <Route path='/signin' element={<SignIn/>}/>
-      <Route element={<PrivateRoute/>}>
-      <Route path='/profile' element={<Profile/>}/>
-      </Route>
-  </Routes>
-  </BrowserRouter>
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/addproduct" element={<AddProduct />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App
