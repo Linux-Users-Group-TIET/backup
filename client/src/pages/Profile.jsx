@@ -170,7 +170,7 @@ function Profile() {
           {loading ? "Loading..." : "Update"}
         </button>
         <Link
-          to="addproduct"
+          to="../addproduct"
           className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90"
         >
           Add product
