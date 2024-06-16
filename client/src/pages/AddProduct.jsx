@@ -7,12 +7,22 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { app } from "../firebase";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
+  const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
   const [uploadProgress, setUploadProgress] = useState(null);
   const [files, setFiles] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formdata, setFormData] = useState({
     imageUrls: [],
+    name: "",
+    description: "",
+    series: "",
+    price: "",
     storageRefs: [], // To store storage references for deletion
   });
 
@@ -104,41 +114,83 @@ function AddProduct() {
         // Handle error (e.g., show error message to user)
       });
   };
+  console.log(formdata);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (formdata.imageUrls.length < 1)
+        return setError("At least 1 image daaldo!!");
+      setLoading(true);
+      setError(false);
+      const res = await fetch("/api/listing/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formdata,
+          userRef: currentUser._id,
+        }),
+      });
+      const data = await res.json();
+      setLoading(false);
+      if (data.sucess === false) {
+        setError(data.message);
+      }
 
+      navigate(`/listing/${data._id}`);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
   return (
     <main className="p-3 max-w-5xl mx-auto">
       <h1 className="text-3xl font-semibold text-center my-9">Add Product</h1>
-      <form className="flex flex-col gap-4 sm:flex-row">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row">
         <div className="flex flex-col gap-5 flex-1">
           <p className="text-gray-600">Product Name</p>
           <input
             type="text"
             placeholder="Enter Product Name"
-            id="name"
+            name="name"
             className="border p-3 rounded-lg"
             maxLength="62"
-            minLength="18"
+            minLength="2"
             required
+            onChange={handleChange}
+            value={formdata.name}
           />
           <p className="text-gray-600">Product Description</p>
           <input
             type="text"
             placeholder="Enter Product Description"
-            id="description"
+            name="description"
             className="border p-3 rounded-lg h-40 text-left align-top"
             maxLength="62"
-            minLength="18"
+            minLength="2"
             required
+            onChange={handleChange}
+            value={formdata.description}
           />
           <p className="text-gray-600">Series Name</p>
           <input
             type="text"
             placeholder="Enter Series Name"
-            id="Series"
+            name="series"
             className="border p-3 rounded-lg"
             maxLength="62"
-            minLength="18"
+            minLength="2"
             required
+            onChange={handleChange}
+            value={formdata.series}
           />
 
           <div className="flex flex-col gap-4">
@@ -146,9 +198,11 @@ function AddProduct() {
             <input
               placeholder="Enter product cost (in Rs)"
               type="text"
-              id="price"
+              name="price"
               required
               className="p-3 border border-gray-300 rounded-lg"
+              onChange={handleChange}
+              value={formdata.price}
             />
           </div>
         </div>
@@ -223,7 +277,7 @@ function AddProduct() {
               </div>
             ))}
           <button className="bg-slate-500 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-            Add Product
+            {loading ? "Adding Product" : "Add Product"}
           </button>
         </div>
       </form>
