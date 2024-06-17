@@ -48,16 +48,16 @@ function Header() {
           </button>
         </form>
         <ul className="flex gap-6 text-slate-600 font-bold">
-          <Link to="/Products">
+          <Link to="/search">
             <li className="hidden sm:inline hover:px-1 transition-all duration-500 hover:text-slate-800">
-              Bathroom
+              Our Products
             </li>
           </Link>
-          <Link to="/Products">
+          {/* <Link to="/Products">
             <li className="hidden sm:inline hover:px-1 rounded-lg transition-all duration-300 hover:text-slate-800">
               Kitchen
             </li>
-          </Link>
+          </Link> */}
           <Link to="/About">
             <li className="hidden sm:inline hover:px-1 rounded-lg transition-all duration-300 hover:text-slate-800">
               About Us
