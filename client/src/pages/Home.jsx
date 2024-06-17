@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import VideoBackground from "../Components/VideoBackground";
 
 function Home() {
   return (
-    <div>Home</div>
-  )
+    <div>
+      <VideoBackground />
+      <div>Home</div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

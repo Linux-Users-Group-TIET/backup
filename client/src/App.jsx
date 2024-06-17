@@ -10,10 +10,14 @@ import PrivateRoute from './Components/PrivateRoute';
 import Profile from './pages/Profile';
 import AddProduct from "./pages/AddProduct";
 import Search from "./pages/Search";
+import ListingDetail from "./pages/ListingDetails";
+import Footer from "./Components/Footer";
+import Navbar from "./Components/Navbar";
+
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -21,11 +25,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/listing/:id" element={<ListingDetail />} />
         <Route element={<PrivateRoute />}>
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

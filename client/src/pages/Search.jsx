@@ -143,7 +143,7 @@ function Search() {
       </div>
       <div className="mt-6">
         {listings.length > 0 ? (
-          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 p-4">
+          <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 p-4">
             {listings.map((listing) => (
               <ListingItem key={listing._id} listing={listing} />
             ))}

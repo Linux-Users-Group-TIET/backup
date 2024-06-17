@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,700);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fbfbfb;
+  font-family: "Raleway";
+  margin: 0;
+  /* Add padding to body for small screens */
+}
+
+.card {
+   padding-top:40px;
+  width: 100%;
+  max-width: 1000px; /* Limit maximum width */
+  position: relative;
+  background: white;
+  margin: 0 auto;
+  margin: 50px auto;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+nav {
+  width: 100%;
+  color: #727272;
+  text-transform: uppercase;
+  padding: 10px; /* Adjust padding for smaller nav */
+  border-bottom: 2px solid #efefef;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+nav .heart {
+  height: 20px;
+  width: 20px;
+  margin-left: auto; /* Push heart icon to right */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+nav .heart:hover {
+  fill: red;
+}
+
+nav .arrow {
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+}
+
+.photo {
+  padding: 10px;
+  width: 100%; /* Full width on small screens */
+  text-align: center;
+}
+
+.photo img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+.description {
+  padding: 20px;
+  border-left: 0; /* Remove border for small screens */
+}
+
+.description h1 {
+  font-size: 24px; /* Decrease font size for smaller screens */
+}
+
+.description h2 {
+  font-size: 18px; /* Decrease font size for smaller screens */
+}
+
+.description h4 {
+  font-size: 12px;
+}
+
+.description p {
+  font-size: 12px;
+  line-height: 18px; /* Adjust line height for readability */
+  padding: 10px 0;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  margin-top: 10px;
+}
+
+.button-container button {
+  flex: 1; /* Take up full width on small screens */
+  margin: 5px; /* Add spacing between buttons */
+  padding: 10px;
+}
+
+.button-container button:first-child {
+  margin-left: 0; /* Remove margin from first button */
+}
+
+.button-container button:last-child {
+  margin-right: 0; /* Remove margin from last button */
+}
+
+.button-container button:hover {
+  border-color: #aedaa6;
+  color: #aedaa6;
+  cursor: pointer;
+}

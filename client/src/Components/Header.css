@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
+header {
+  background: #00aaff; /* Aqua background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .max-w-6xl {
+  max-width: 1200px; /* Adjust the max width */
+}
+
+header h1 {
+  color: #fff;
+  font-size: 1.75rem;
+}
+
+header h1 span {
+  color: #ffcc00; /* Yellow for the company name */
+}
+
+header form {
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header form input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+header form button {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+header ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+header ul li {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+header ul li:hover {
+  color: #ffcc00; /* Hover effect to match the company name color */
+}
+
+header ul img {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+}
