@@ -9,6 +9,7 @@ import Header from './Components/Header';
 import PrivateRoute from './Components/PrivateRoute';
 import Profile from './pages/Profile';
 import AddProduct from "./pages/AddProduct";
+import Search from "./pages/Search";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/search" element={<Search />} />
         <Route element={<PrivateRoute />}>
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/profile" element={<Profile />} />
