@@ -1,117 +1,181 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,700);
+@import url("https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi");
 
-* {
-  box-sizing: border-box;
-}
-
+/* Base styles */
 body {
-  background: #fbfbfb;
-  font-family: "Raleway";
+  background-color: rgb(245, 244, 244);
+  font-family: "Raleway", sans-serif;
   margin: 0;
-  /* Add padding to body for small screens */
+  padding: 0;
 }
 
-.card {
-   padding-top:40px;
-  width: 100%;
-  max-width: 1000px; /* Limit maximum width */
-  position: relative;
-  background: white;
-  margin: 0 auto;
+.wrapper {
+  width: 90%;
+  max-width: 1000px;
   margin: 50px auto;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-  transition: all 0.3s;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  position: relative;
+  opacity: 0; /* Initial opacity for fade-in animation */
+  animation: fadeIn 1s forwards;
 }
 
-.card:hover {
-  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
-nav {
+/* Back button */
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  background-color: #9cebd5;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s ease; /* Added transform transition */
+  z-index: 1; /* Ensure the button is above other elements */
+}
+
+.back-button:hover {
+  background-color: #79b0a1;
+  transform: scale(1.1); /* Scale effect on hover */
+}
+
+/* Product image section */
+.product-img {
+  flex: 1 1 50%;
+  height: auto;
+  overflow: hidden;
+  position: relative; /* Added for image overlay */
+}
+
+.product-img:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+  transition: transform 0.3s ease;
+}
+
+.object-contain {
   width: 100%;
-  color: #727272;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 7px 0 0 7px;
+}
+
+/* Product information section */
+.product-info {
+  flex: 1 1 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0; /* Initial opacity for fade-in animation */
+  animation: fadeIn 1s forwards;
+}
+
+/* Product text styles */
+.product-text {
+  margin-bottom: 20px;
+}
+
+.product-text h1 {
+  margin: 0;
+  padding-top: 20px;
+  font-size: 34px;
+  color: #474747;
+  font-family: "Bentham", serif;
+}
+
+.product-text h2 {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
   text-transform: uppercase;
-  padding: 10px; /* Adjust padding for smaller nav */
-  border-bottom: 2px solid #efefef;
-  font-size: 12px;
+  color: #d2d2d2;
+  letter-spacing: 0.2em;
+}
+
+.product-text p {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+/* Product price and button section */
+.product-price-btn {
   display: flex;
   align-items: center;
 }
 
-nav .heart {
-  height: 20px;
-  width: 20px;
-  margin-left: auto; /* Push heart icon to right */
-  transition: all 0.3s ease;
+.product-price-btn p {
+  margin: 0;
+  font-family: "Trocchi", serif;
+  font-size: 28px;
+  font-weight: lighter;
+  color: #474747;
+}
+
+.product-price-btn span {
+  font-family: "Suranna", serif;
+  font-size: 34px;
+}
+
+.product-price-btn button {
+  margin-left: auto;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 60px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #9cebd5;
   cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, transform 0.3s ease; /* Added transform transition */
 }
 
-nav .heart:hover {
-  fill: red;
+.product-price-btn button:hover {
+  background-color: #79b0a1;
 }
 
-nav .arrow {
-  height: 12px;
-  width: 12px;
-  margin-right: 5px;
+.product-price-btn button:active {
+  transform: scale(0.95); /* Scale down effect on button click */
+  background-color: #79b0a1;
 }
 
-.photo {
-  padding: 10px;
-  width: 100%; /* Full width on small screens */
-  text-align: center;
+/* Typing animation for h1 */
+.product-text h1 {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 4s steps(30, end);
 }
 
-.photo img {
-  max-width: 100%;
-  height: auto; /* Maintain aspect ratio */
-}
-
-.description {
-  padding: 20px;
-  border-left: 0; /* Remove border for small screens */
-}
-
-.description h1 {
-  font-size: 24px; /* Decrease font size for smaller screens */
-}
-
-.description h2 {
-  font-size: 18px; /* Decrease font size for smaller screens */
-}
-
-.description h4 {
-  font-size: 12px;
-}
-
-.description p {
-  font-size: 12px;
-  line-height: 18px; /* Adjust line height for readability */
-  padding: 10px 0;
-}
-
-.button-container {
-  display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
-  margin-top: 10px;
-}
-
-.button-container button {
-  flex: 1; /* Take up full width on small screens */
-  margin: 5px; /* Add spacing between buttons */
-  padding: 10px;
-}
-
-.button-container button:first-child {
-  margin-left: 0; /* Remove margin from first button */
-}
-
-.button-container button:last-child {
-  margin-right: 0; /* Remove margin from last button */
-}
-
-.button-container button:hover {
-  border-color: #aedaa6;
-  color: #aedaa6;
-  cursor: pointer;
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }

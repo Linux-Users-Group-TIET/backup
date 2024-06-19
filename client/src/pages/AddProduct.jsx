@@ -174,7 +174,7 @@ function AddProduct() {
             placeholder="Enter Product Description"
             name="description"
             className="border p-3 rounded-lg h-40 text-left align-top"
-            maxLength="200"
+            maxLength="300"
             minLength="2"
             required
             onChange={handleChange}

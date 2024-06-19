@@ -1,0 +1,117 @@
+
+.profile-container {
+    max-width: 600px; /* Adjust max-width as needed */
+    margin: 50px auto; /* Increase margin from top and bottom */
+    padding: 40px;
+    background-color: #f3f4f6; /* Light gray background */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  }
+  
+  .profile-title {
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .profile-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: #4caf50;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #4caf50;
+  }
+  
+  .file-upload-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .button-primary {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-primary:hover {
+    background-color: #45a049;
+  }
+  
+  .button-secondary {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-secondary:hover {
+    background-color: #da190b;
+  }
+  
+  .success-message {
+    color: #4caf50;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .error-message {
+    color: #f44336;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .delete-account {
+    color: #f44336;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  
+  .delete-account:hover {
+    text-decoration: underline;
+  }
+  
+
+  
+  .profile-container:hover .animation-line {
+    width: 100%;
+  }
+  

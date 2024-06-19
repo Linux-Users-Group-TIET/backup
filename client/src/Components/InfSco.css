@@ -1,0 +1,61 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 15px;
+}
+
+body {
+  margin: 0;
+  --color-text: #dedede;
+  --color-bg: #1a1a1a;
+ 
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: sofia-pro, sans-serif;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.marquee-container {
+  height: 5vh;
+  overflow: hidden;
+  font-size: x-large;
+  line-height: 45px;
+  background-color: black; /* Background color */
+  color: white; /* Text color */
+}
+
+.marquee {
+  top: 0;
+  left: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee2 {
+  animation-delay: 12s;
+}
+
+.marquee span {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+@keyframes marquee {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}

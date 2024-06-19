@@ -1,7 +1,7 @@
+import React, { useEffect, useState, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect, useState, useRef } from "react";
 import classNames from "classnames";
 
 function Header() {
@@ -77,27 +77,20 @@ function Header() {
   };
 
   return (
-    <header
-      className={classNames(
-        "bg-gradient-to-r from-gray-200 to-gray-300 shadow-lg relative transition-transform duration-300",
-        {
-          "-translate-y-full": !isHeaderVisible,
-        }
-      )}
-    >
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-4">
-        <Link to="/" className="text-gray-800">
+    <div className="bg-black border-b-2 border-black text-white">
+      <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8 flex justify-between items-center">
+        <Link to="/" className="text-gray-100">
           <h1 className="font-bold text-3xl">MagicSprings</h1>
         </Link>
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-2 rounded-lg flex items-center shadow-md"
+          className="flex items-center flex-grow ml-4 sm:ml-6"
         >
           <input
             type="text"
             placeholder="Search our products"
             className={classNames(
-              "bg-transparent focus:outline-none sm:w-64 w-24 text-gray-800",
+              "bg-transparent focus:outline-none text-gray-100",
               {
                 "w-24": !isSearching,
                 "w-64": isSearching,
@@ -109,75 +102,53 @@ function Header() {
             onBlur={handleSearchBlur}
           />
           <button className="ml-2 focus:outline-none">
-            <FaSearch className="text-gray-600" />
+            <FaSearch className="text-gray-300" />
           </button>
         </form>
-        <ul className="flex gap-6 text-gray-800 font-bold items-center space-x-4">
+        <ul className="flex gap-6 text-gray-100 font-bold items-center space-x-4 ml-auto">
           <li
-            ref={productsRef}
             className={classNames(
-              "relative",
               {
-                "hover:text-gray-600": !isProductsOpen,
-                "text-gray-600": isProductsOpen,
+                "hover:text-gray-300": !isProductsOpen,
+                "text-gray-300": isProductsOpen,
               },
-              "transition-all duration-300"
+              "transition-all duration-300 ml-10"
             )}
           >
-            <span
-              onClick={toggleProductsMenu}
-              className="cursor-pointer inline-block"
-            >
+            <Link to="/search" className="cursor-pointer">
               Our Products
-            </span>
-            {isProductsOpen && (
-              <div className="absolute bg-white mt-2 py-2 px-4 rounded-lg shadow-md top-full left-0 z-10 transition-all duration-300">
-                <Link
-                  to="/search"
-                  className="block py-1 hover:text-gray-700 transition-all duration-300"
-                >
-                  Category 1
-                </Link>
-                <Link
-                  to="/search"
-                  className="block py-1 hover:text-gray-700 transition-all duration-300"
-                >
-                  Category 2
-                </Link>
-                <Link
-                  to="/search"
-                  className="block py-1 hover:text-gray-700 transition-all duration-300"
-                >
-                  Category 3
-                </Link>
-              </div>
-            )}
+            </Link>
           </li>
-          <Link
-            to="/About"
-            className="hover:text-gray-600 transition-all duration-300"
-          >
-            <li className="hidden sm:inline">About Us</li>
-          </Link>
-          {currentUser ? (
-            <Link to="/profile">
-              <img
-                className="rounded-full h-8 w-8 object-cover hover:animate-bounce"
-                src={currentUser.avatar}
-                alt="profile"
-              />
-            </Link>
-          ) : (
+          <li className="hidden sm:inline">
             <Link
-              to="/signIn"
-              className="hover:text-gray-600 transition-all duration-300"
+              to="/about"
+              className="hover:text-gray-300 transition-all duration-300"
             >
-              <li className="sm:inline">Sign in</li>
+              About Us
             </Link>
+          </li>
+          {currentUser ? (
+            <li>
+              <Link
+                to="/profile"
+                className="hover:text-gray-300 transition-all mr-4 duration-300"
+              >
+                Profile
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link
+                to="/signin"
+                className="hover:text-gray-300 transition-all duration-300"
+              >
+                Sign in
+              </Link>
+            </li>
           )}
         </ul>
       </div>
-    </header>
+    </div>
   );
 }
 

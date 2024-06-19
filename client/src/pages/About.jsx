@@ -54,33 +54,34 @@ const About = () => {
 
 const Container = styled.div`
   padding: 20px;
-  background: #f9f9f9;
+  background: #000; /* White background */
   font-family: "Raleway", sans-serif;
 `;
 
 const Header = styled.header`
   text-align: center;
   padding: 50px 0;
-  background: #e0f7fa;
-  border-bottom: 2px solid #00acc1;
+  background: #000; /* Black header background */
+  color: #fff; /* White text color */
 `;
 
 const Title = styled.h1`
   font-size: 36px;
-  color: #00796b;
+  color: #fff; /* White title text color */
   margin: 0;
 `;
 
 const Subtitle = styled.h2`
   font-size: 24px;
-  color: #004d40;
+  color: #fff; /* White subtitle text color */
   margin: 10px 0 0;
 `;
 
 const Content = styled.div`
   max-width: 1000px;
   margin: 50px auto;
-  background: white;
+  background: #000; /* Black content background */
+  color: #fff; /* White text color */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   padding: 20px;
   border-radius: 8px;
@@ -92,14 +93,14 @@ const Section = styled.section`
 
 const SectionTitle = styled.h3`
   font-size: 28px;
-  color: #00796b;
+  color: #fff; /* White section title color */
   margin-bottom: 10px;
   position: relative;
   &::after {
     content: "";
-    width: 50px;
-    height: 4px;
-    background: #00acc1;
+    width: 100%;
+    height: 1px;
+    background: #fff; /* White line color */
     display: block;
     position: absolute;
     bottom: -5px;
@@ -109,8 +110,10 @@ const SectionTitle = styled.h3`
 
 const Text = styled.p`
   font-size: 16px;
-  color: #616161;
+  color: #fff; /* White text color */
   line-height: 1.6;
+  border-left: 3px solid #fff; /* White border left */
+  padding-left: 10px;
 `;
 
 export default About;

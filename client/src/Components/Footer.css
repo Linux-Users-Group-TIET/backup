@@ -1,8 +1,8 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 .footer {
-  background: #28899c; /* Aqua background color */
-  color: #333; /* Darker text color for contrast */
+  background: #000; /* Black background */
+  color: #fff; /* White text color */
   padding: 20px 0;
   position: relative;
 }
@@ -42,7 +42,7 @@
 .socials a {
   margin: 0 10px;
   text-decoration: none;
-  color: #333; /* Darker color for social icons */
+  color: #fff; /* White color for social icons */
   font-size: 18px;
 }
 
@@ -56,29 +56,29 @@
 
 .footer-section ul li a {
   text-decoration: none;
-  color: #333; /* Darker text color for contrast */
+  color: #fff; /* White text color */
   font-size: 14px;
   transition: color 0.3s;
 }
 
 .footer-section ul li a:hover {
-  color: #00796b; /* Slightly darker aqua for hover */
+  color: #00796b; /* Aqua color for hover */
 }
 
 .contact-form .text-input {
-  background: #b9e3f0; /* Lighter aqua background */
+  background: #333; /* Darker background for inputs */
   border: none;
   padding: 10px;
   margin-bottom: 10px;
   width: calc(100% - 22px);
-  color: #333; /* Darker text color */
+  color: #fff; /* White text color */
   border-radius: 5px;
 }
 
 .contact-form .btn {
-  background: #00796b; /* Darker aqua button background */
+  background: #00796b; /* Aqua button background */
   border: none;
-  color: #fff; /* White text for contrast */
+  color: #fff; /* White text color */
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -86,14 +86,14 @@
 }
 
 .contact-form .btn:hover {
-  background: #438e8e; /* Aqua background on hover */
+  background: #438e8e; /* Darker aqua background on hover */
 }
 
 .footer-bottom {
-  background: #28899c; /* Lighter aqua background */
+  background: #000; /* Black background */
   padding: 10px 0;
   text-align: center;
-  color: #333; /* Darker text color */
+  color: #fff; /* White text color */
   margin-top: 20px;
 }
 

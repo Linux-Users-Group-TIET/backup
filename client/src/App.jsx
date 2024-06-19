@@ -1,13 +1,13 @@
-import React from 'react'
-import {BrowserRouter,Routes, Route} from 'react-router-dom';
-import Home from "./pages/Home"
-import About from './pages/About';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
-import Products from './pages/Products';
-import Header from './Components/Header';
-import PrivateRoute from './Components/PrivateRoute';
-import Profile from './pages/Profile';
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import Products from "./pages/Products";
+import Header from "./Components/Header";
+import PrivateRoute from "./Components/PrivateRoute";
+import Profile from "./pages/Profile";
 import AddProduct from "./pages/AddProduct";
 import Search from "./pages/Search";
 import ListingDetail from "./pages/ListingDetails";
@@ -15,9 +15,11 @@ import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
+      {location.pathname === "/" ? <Navbar /> : <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -32,8 +34,9 @@ function App() {
         </Route>
       </Routes>
       <Footer />
-    </BrowserRouter>
+      {/* <Footer /> */}
+    </>
   );
 }
 
-export default App
+export default App;

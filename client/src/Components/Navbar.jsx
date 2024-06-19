@@ -8,7 +8,7 @@ const menuLinks = [
   { path: "/", label: "Home" },
   { path: "/search", label: "Products" }, // Fixed duplicate label
   { path: "/about", label: "About" },
-  { path: "/signin", label: "SignIn" },
+  { path: "/Profile", label: "SignIn" },
 ];
 
 function Navbar() {
@@ -67,12 +67,12 @@ function Navbar() {
             <Link to="/">MagicSprings</Link>
           </div>
           <div className="menu-close" onClick={toggleMenu}>
-            <p>Close</p>
+            <p>&#x2715;</p>
           </div>
         </div>
-        <div className="menu-close-icon">
+        {/* <div className="menu-close-icon">
           <p>&#x2715;</p>
-        </div>
+        </div> */}
         <div className="menu-copy">
           <div className="menu-links">
             {menuLinks.map((link, index) => (

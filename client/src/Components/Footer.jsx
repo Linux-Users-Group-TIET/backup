@@ -1,9 +1,9 @@
 import React from "react";
-import "./Footer.css"; // Make sure to create a corresponding CSS file
+import "./Footer.css"; // Import custom CSS for styling
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer bg-black text-white">
       <div className="container">
         <div className="footer-content">
           <div className="footer-section about">

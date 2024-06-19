@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   signOutUserFailure,
@@ -16,6 +16,7 @@ import {
 } from "firebase/storage";
 import { app } from "../firebase";
 import { Link } from "react-router-dom";
+import "./Profile.css";
 function Profile() {
   const fileRef = useRef(null);
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -24,8 +25,8 @@ function Profile() {
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formdata, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
-  console.log(updateSuccess);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (file) {
       handleFileUpload(file); // When 'file' changes, trigger the file upload process
@@ -49,7 +50,6 @@ function Profile() {
       },
       (error) => {
         // Error handling
-
         setFileUploadError(true);
       },
       () => {
@@ -83,12 +83,11 @@ function Profile() {
       [e.target.id]: e.target.value,
     });
   };
-  console.log(formdata);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      console.log(currentUser._id);
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: "POST",
         headers: {
@@ -106,8 +105,9 @@ function Profile() {
       updateUserFailure(error.message);
     }
   };
+
   return (
-    <div className="p-3 max-w-lg mx-auto">
+    <div className="profile-container">
       <input
         onChange={(e) => setFile(e.target.files[0])}
         type="file"
@@ -115,76 +115,61 @@ function Profile() {
         hidden
         accept="image/*"
       />
-      <h1 className="text-3xl font-semibold text-center my-8">Profile</h1>
-      <form onSubmit={handleSubmit} className="flex  flex-col gap-4">
-        <img
-          onClick={() => fileRef.current.click()}
-          className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mx-auto mt-9"
-          src={formdata?.avatar || currentUser.avatar}
-          alt="profile"
-        />
-        <p className="text-sm self-center mb-6">
-          {
-            // <span className="text-red-700">
-            //   Error Image Uploading (image must be less than 2mb😠)
-            // </span>
-            fileperc > 0 && fileperc < 100 ? (
-              <span className="text-slate-700">{`Uploading ${fileperc}%`}</span>
-            ) : fileperc === 100 ? (
-              <span className="text-green-700">
-                Image successfully uploaded!
-              </span>
-            ) : (
-              ""
-            )
-          }
+      <h1 className="profile-title">Profile</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <p className="file-upload-info">
+          {fileperc > 0 && fileperc < 100 ? (
+            <span>{`Uploading ${fileperc}%`}</span>
+          ) : fileperc === 100 ? (
+            <span>Image successfully uploaded!</span>
+          ) : (
+            ""
+          )}
         </p>
 
         <input
           type="text"
           id="username"
           defaultValue={currentUser.username}
-          placeholder="username"
-          className="border p-3 rounded-lg"
+          placeholder="Username"
+          className="form-input"
           onChange={handleChange}
         />
         <input
           type="email"
           id="email"
           defaultValue={currentUser.email}
-          placeholder="email"
-          className="border p-3 rounded-lg"
+          placeholder="Email"
+          className="form-input"
           onChange={handleChange}
         />
         <input
           type="password"
           id="password"
-          placeholder="password"
+          placeholder="Password"
+          className="form-input"
           onChange={handleChange}
-          className="border p-3 rounded-lg"
         />
-        <button
-          disabled={loading}
-          className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity:80"
-        >
+        <button disabled={loading} className="button-primary">
           {loading ? "Loading..." : "Update"}
         </button>
-        <Link
-          to="../addproduct"
-          className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90"
-        >
-          Add product
-        </Link>
+        {(currentUser.email === "devangpathak752001@gmail.com" ||
+          currentUser.email === "pathaksprings@gmail.com") && (
+          <Link to="../addproduct" className="button-secondary">
+            Add Product
+          </Link>
+        )}
       </form>
       <div className="flex justify-between mt-5">
-        <span className="text-red-700 cursor-pointer">Delete Account</span>
-        <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
-          Sign out
+        <span className="delete-account">Delete Account</span>
+        <span onClick={handleSignOut} className="delete-account">
+          Sign Out
         </span>
       </div>
-      <p className="text-green-700 mt-5">
+      <p className="success-message mt-5">
         {updateSuccess ? "User Updated Successfully!" : ""}
       </p>
+      <div className="animation-line"></div>
     </div>
   );
 }

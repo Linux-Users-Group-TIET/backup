@@ -1,62 +1,54 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import "./ListingStyle.css";
 
 const ListingItem = ({ listing }) => {
   return (
     <Link to={`/listing/${listing._id}`} className="block w-full h-full">
       <motion.li
-        className="border rounded-lg shadow-lg overflow-hidden relative"
-        whileHover={{
-          scale: 1.05,
-          transition: { duration: 0.3 },
-        }}
+        className="card border rounded-lg shadow-lg overflow-hidden relative"
+        whileHover={{ scale: 1.05 }} /* Example of hover animation */
       >
         <div className="relative">
-          <img
-            src={listing.imageUrls[0]} // Assuming the first image in the array covers the listing
+          <motion.img
+            src={listing.imageUrls[0]}
             alt={listing.name}
-            className="object-cover w-full h-64 sm:h-80 md:h-96 lg:h-112 xl:h-128"
+            className="card__img object-cover w-full"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition duration-300">
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-4 text-center">
-              <motion.p
-                className="text-base sm:text-lg md:text-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 0.2 } }}
-              >
-                {listing.description}
-              </motion.p>
-              <motion.p
-                className="text-base sm:text-lg md:text-xl mt-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 0.4 } }}
-              >
-                Series: {listing.series}
-              </motion.p>
-              <motion.p
-                className="text-base sm:text-lg md:text-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 0.6 } }}
-              >
-                Price: ${listing.price}
-              </motion.p>
-            </div>
+          <div className="card__overlay absolute inset-0 flex justify-center items-center opacity-0 hover:opacity-100">
+            <p className="text-white text-xl font-bold">View Product</p>
           </div>
-          <motion.div
-            className="absolute bottom-4 left-4 right-4 bg-white text-black p-2 sm:p-3 md:p-2 
-          text-sm sm:text-xl md:text-xs font-bold shadow-lg opacity-100 hover:opacity-80 
-          transition duration-300 pointer-events-auto border-2 border-transparent 
-          hover:border-black-500"
-            initial={{ opacity: 0, y: 60 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.6, delay: 0.8 },
-            }}
+        </div>
+        <div className="card__details p-4">
+          <motion.p
+            className="card__name"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.2 } }}
           >
             {listing.name}
-          </motion.div>
+          </motion.p>
+          {/* <motion.p
+            className="card__description text-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.4 } }}
+          >
+            {listing.description}
+          </motion.p> */}
+          <motion.p
+            className="card__series text-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.6 } }}
+          >
+            Series: {listing.series}
+          </motion.p>
+          <motion.p
+            className="card__price text-lg font-semibold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.8 } }}
+          >
+            Price: {listing.price}
+          </motion.p>
         </div>
       </motion.li>
     </Link>

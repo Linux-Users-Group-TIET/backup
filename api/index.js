@@ -23,7 +23,7 @@ app.use(express.json());
 
 app.use(cookieParser())
 
-app.listen(3000 , () => {
+app.listen(4000 , () => {
     console.log("Server 3000 me chlla hai , startup at http://localhost:3000/")
 })
 

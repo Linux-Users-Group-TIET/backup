@@ -141,15 +141,15 @@ function Search() {
           </button>
         </form>
       </div>
-      <div className="mt-6">
+      <div className="p-6 md:p-4 mt-4 md:mt-0 w-full">
         {listings.length > 0 ? (
-          <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {listings.map((listing) => (
               <ListingItem key={listing._id} listing={listing} />
             ))}
-          </ul>
+          </div>
         ) : (
-          <p>No listings found.</p>
+          <p className="text-center text-gray-700 mt-4">No listings found.</p>
         )}
       </div>
     </div>
