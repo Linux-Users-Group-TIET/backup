@@ -7,7 +7,7 @@ import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
 dotenv.config();
 
-mongoose.connect(process.env.MONGOURL,{
+mongoose.connect(process.env.mongourl,{
   
 }).then(() => {
    
@@ -26,7 +26,13 @@ app.use(cookieParser())
 app.listen(4000 , () => {
     console.log("Server 3000 me chlla hai , startup at http://localhost:3000/")
 })
-
+const cors = require('cors');
+// Allow all origins
+app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://magicspringsfrontend-git-main-devs-projects-6847079c.vercel.app/'
+}));
 app.use('/api/user', userRouter);
 app.use('/api/auth' , authRouter);
 app.use('/api/listing' , listingRouter);
