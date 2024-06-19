@@ -20,17 +20,14 @@
 }
 
 .custom-card-img {
-  transition: all 0.5s;
-  display: flex;
-  justify-content: center;
   overflow: hidden; /* Ensure images don't overflow on smaller screens */
 }
 
 .custom-img {
   width: 100%;
   height: auto;
-  max-height: 250px; /* Increased max-height for larger images */
-  object-fit: cover;
+  object-fit: contain; /* Keeps the entire image visible, fitting it within the container */
+  border-radius: 8px 8px 0 0; /* Rounded corners only at the top */
 }
 
 .custom-card-title {
@@ -44,12 +41,14 @@
   font-size: 14px;
   font-weight: 400;
   color: var(--font-color-sub);
+  text-align: center;
 }
 
 .custom-card-divider {
   width: 100%;
   border: 1px solid var(--main-color);
   border-radius: 50px;
+  margin: 10px 0;
 }
 
 .custom-card-footer {
@@ -66,8 +65,8 @@
 }
 
 .custom-card-price span {
-  font-size: 22px; /* Slightly increased font size */
-  font-weight: 500;
+  font-size: 16px; /* Adjusted font size for the span */
+  font-weight: 400;
   color: var(--font-color-sub);
 }
 
@@ -82,7 +81,7 @@
   }
   
   .custom-card-img .custom-img {
-    max-height: 200px;
+    height: 100%; /* Ensure image takes full height of its container */
   }
 
   .custom-card-title {

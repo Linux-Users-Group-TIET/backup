@@ -78,75 +78,72 @@ function Header() {
 
   return (
     <div className="bg-black border-b-2 border-black text-white">
-      <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between">
         <Link to="/" className="text-gray-100">
-          <h1 className="font-bold text-3xl">MagicSprings</h1>
+          <h1 className="font-bold text-2xl">MagicSprings</h1>
         </Link>
-        <form
-          onSubmit={handleSubmit}
-          className="flex items-center flex-grow ml-4 sm:ml-6"
-        >
-          <input
-            type="text"
-            placeholder="Search our products"
-            className={classNames(
-              "bg-transparent focus:outline-none text-gray-100",
-              {
-                "w-24": !isSearching,
-                "w-64": isSearching,
-              }
-            )}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onFocus={handleSearchFocus}
-            onBlur={handleSearchBlur}
-          />
-          <button className="ml-2 focus:outline-none">
-            <FaSearch className="text-gray-300" />
-          </button>
-        </form>
-        <ul className="flex gap-6 text-gray-100 font-bold items-center space-x-4 ml-auto">
-          <li
-            className={classNames(
-              {
-                "hover:text-gray-300": !isProductsOpen,
-                "text-gray-300": isProductsOpen,
-              },
-              "transition-all duration-300 ml-10"
-            )}
-          >
-            <Link to="/search" className="cursor-pointer">
-              Our Products
-            </Link>
-          </li>
-          <li className="hidden sm:inline">
-            <Link
-              to="/about"
-              className="hover:text-gray-300 transition-all duration-300"
-            >
-              About Us
-            </Link>
-          </li>
-          {currentUser ? (
-            <li>
+        <div className="flex items-center mt-2 sm:mt-0 sm:ml-4 sm:flex-grow">
+          <form onSubmit={handleSubmit} className="flex items-center flex-grow">
+            <input
+              type="text"
+              placeholder="Search our products"
+              className={classNames(
+                "bg-transparent focus:outline-none text-gray-100",
+                {
+                  "w-24": !isSearching,
+                  "w-48": isSearching,
+                }
+              )}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onFocus={handleSearchFocus}
+              onBlur={handleSearchBlur}
+            />
+            <button className="ml-2 focus:outline-none">
+              <FaSearch className="text-gray-300" />
+            </button>
+          </form>
+          <ul className="flex gap-3 sm:gap-6 text-gray-100 font-bold items-center space-x-2 sm:space-x-4 ml-auto mt-2 sm:mt-0">
+            <li className="sm:ml-4 ml-8">
               <Link
-                to="/profile"
-                className="hover:text-gray-300 transition-all mr-4 duration-300"
+                to="/search"
+                className={classNames("cursor-pointer ", {
+                  "hover:text-gray-300": !isProductsOpen,
+                  "text-gray-300": isProductsOpen,
+                })}
               >
-                Profile
+                Our Products
               </Link>
             </li>
-          ) : (
-            <li>
+            <li className="sm:ml-4">
               <Link
-                to="/signin"
+                to="/about"
                 className="hover:text-gray-300 transition-all duration-300"
               >
-                Sign in
+                About Us
               </Link>
             </li>
-          )}
-        </ul>
+            {currentUser ? (
+              <li className="sm:ml-4">
+                <Link
+                  to="/profile"
+                  className="hover:text-gray-300 transition-all duration-300"
+                >
+                  Profile
+                </Link>
+              </li>
+            ) : (
+              <li className="sm:ml-4">
+                <Link
+                  to="/signin"
+                  className="hover:text-gray-300 transition-all duration-300"
+                >
+                  Sign in
+                </Link>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );

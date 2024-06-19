@@ -65,6 +65,7 @@ body {
   position: relative; /* Added for image overlay */
 }
 
+
 .product-img:hover {
   transform: scale(1.05); /* Zoom effect on hover */
   transition: transform 0.3s ease;
