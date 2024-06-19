@@ -1,17 +1,10 @@
 /* Global Styles */
 * {
 	box-sizing: border-box;
-  }
-  
-  html {
-	font-size: calc(4px + 0.45vw);
-  }
-  
-  body {
-	font-family: 'Montserrat', sans-serif;
-	background-color: black;
 	color: white;
   }
+  
+
   
   a {
 	text-decoration: none;
@@ -58,12 +51,7 @@
   }
   
 
-  
-  body {
-	font-family: 'Glory', sans-serif;
-	background-image: radial-gradient(circle, #333, #000 13em);
-  }
-  
+
 
   
   .card {
