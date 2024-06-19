@@ -5,7 +5,6 @@ const Carousel = () => {
   return (
     <div>
       <section className="carousel">
-        <h2 className="categories__title">My List</h2>
         <div className="carousel__container">
           <div className="carousel-item">
             <img
