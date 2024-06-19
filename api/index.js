@@ -31,7 +31,8 @@ const cors = require('cors');
 app.use(cors());
 // Allow specific origin(s)
 app.use(cors({
-  origin: 'https://magicspringsfrontend-git-main-devs-projects-6847079c.vercel.app/'
+  origin: 'https://magicspringsfrontend-git-main-devs-projects-6847079c.vercel.app/',
+  credentials: true,
 }));
 app.use('/api/user', userRouter);
 app.use('/api/auth' , authRouter);
